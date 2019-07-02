@@ -1,21 +1,13 @@
 package com.example.mariatrapicyna.smart_fridge
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-<<<<<<< HEAD
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import android.widget.Toast
 import com.google.firebase.database.FirebaseDatabase.getInstance
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.ValueEventListener
-
-
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,19 +15,35 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        var email = findViewById<EditText>(R.id.email)
-        var password = findViewById<EditText>(R.id.password)
-        var singIn = findViewById<Button>(R.id.singIn)
-        var register = findViewById<Button>(R.id.register)
+        val email = findViewById<EditText>(R.id.email)
+        val password = findViewById<EditText>(R.id.password)
+        val singIn = findViewById<Button>(R.id.singIn)
+        val register = findViewById<Button>(R.id.register)
 
-        register.setOnClickListener(View.OnClickListener {
+        register.setOnClickListener {
             this.startActivity(Intent(this, RegisterActivity::class.java))
-        })
-    }
-        setContentView(R.layout.activity_main)
+        }
+        singIn.setOnClickListener {
+            if (isSinged()) {
+
+            } else {
+                Toast.makeText(applicationContext, "Даннны не корректны", Toast.LENGTH_LONG).show()
+                // И пишет где ошибка
+            }
+
+        }
+
         val database = getInstance()
         val myRef = database.reference
         myRef.child("users").setValue("Hello, World!")
 
+    }
+
+    private fun isSinged(): Boolean {
+        /*
+        * Проверяет корректность данных
+        * Допишете, когда доделаете авторизацию :)  */
+
+        return true
     }
 }
