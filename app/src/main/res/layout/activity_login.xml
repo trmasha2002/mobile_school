@@ -43,20 +43,21 @@
 
     <Button
             android:id="@+id/singIn"
-            android:enabled="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:clickable="true"
             android:text="@string/sing_in"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/register"
             app:layout_constraintStart_toStartOf="@+id/register"
             app:layout_constraintTop_toBottomOf="@+id/password"
-            app:layout_constraintVertical_bias="0.2"/>
+            app:layout_constraintVertical_bias="0.2"
+            android:focusable="true"/>
     <Button
             android:id="@+id/register"
-            android:enabled="false"
             android:layout_width="wrap_content"
+            android:focusable="true"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginStart="48dp"
