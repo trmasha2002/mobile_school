@@ -1,9 +1,10 @@
 package com.example.mariatrapicyna.smart_fridge
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -11,9 +12,19 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        var email = findViewById<EditText>(R.id.email)
-        var password = findViewById<EditText>(R.id.password)
-        var username = findViewById<EditText>(R.id.username)
-        var register = findViewById<Button>(R.id.register)
+        val email = findViewById<EditText>(R.id.email)
+        val firstPassword = findViewById<EditText>(R.id.firstPassword)
+        val secondPassword = findViewById<EditText>(R.id.secondPassword)
+        val username = findViewById<EditText>(R.id.username)
+        val register = findViewById<Button>(R.id.register)
+
+
+        register.setOnClickListener {
+            if (firstPassword.text == secondPassword.text) {
+
+            } else {
+                Toast.makeText(applicationContext, "Пароли не совпадают", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 }

@@ -11,21 +11,21 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-    <EditText
+    <TextView
             android:id="@+id/email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="96dp"
             android:layout_marginEnd="24dp"
-
             android:hint="@string/prompt_email"
-            android:inputType="textEmailAddress"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
-    <EditText
+
+
+    <TextView
             android:id="@+id/username"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -33,44 +33,55 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:focusable="true"
-
             android:hint="@string/username"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email"/>
-
     <EditText
-            android:id="@+id/firstPassword"
+            android:id="@+id/oldPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
 
-            android:hint="@string/prompt_password"
+            android:hint="@string/old_password"
             android:inputType="textPassword"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username"/>
     <EditText
-            android:id="@+id/secondPassword"
+            android:id="@+id/firstNewPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
+
+            android:hint="@string/new_password"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/oldPassword"/>
+    <EditText
+            android:id="@+id/secondNewPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+
             android:hint="@string/new_password_again"
             android:inputType="textPassword"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstPassword"/>
-
-
+            app:layout_constraintTop_toBottomOf="@+id/firstNewPassword"/>
     <Button
-            android:id="@+id/register"
+            android:id="@+id/changePassword"
             android:focusable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -79,11 +90,11 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="48dp"
             android:layout_marginBottom="64dp"
-            android:text="@string/register"
+            android:text="@string/change_password"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password"
+            app:layout_constraintTop_toBottomOf="@+id/secondNewPassword"
             app:layout_constraintVertical_bias="0.4"/>
 
 </android.support.constraint.ConstraintLayout>
