@@ -1,11 +1,15 @@
 package com.example.mariatrapicyna.smart_fridge
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase.getInstance
 
 class MainActivity : AppCompatActivity() {
@@ -19,21 +23,36 @@ class MainActivity : AppCompatActivity() {
         val singIn = findViewById<Button>(R.id.singIn)
         val register = findViewById<Button>(R.id.register)
 
+        var mProgressBar = ProgressDialog(this)
+        var mAuth = FirebaseAuth.getInstance()
+
         register.setOnClickListener {
             this.startActivity(Intent(this, RegisterActivity::class.java))
         }
         singIn.setOnClickListener {
-            if (isSinged()) {
-
+            val Email = email.text.toString()
+            val Password = password?.text.toString()
+            if (!TextUtils.isEmpty(Email) && !TextUtils.isEmpty(Password)) {
+                mProgressBar!!.setMessage("Registering User...")
+                mProgressBar!!.show()
+                mAuth!!.signInWithEmailAndPassword(Email!!, Password!!)
+                    .addOnCompleteListener(this) { task ->
+                        mProgressBar!!.hide()
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with signed-in user's information
+                            this.startActivity(Intent(this, ListActivity::class.java))
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(this@MainActivity, "Не удалось войти. Проверьте данные",
+                                Toast.LENGTH_SHORT).show()
+                        }
+                    }
             } else {
-                Toast.makeText(applicationContext, "Даннны не корректны", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Введите все данные", Toast.LENGTH_SHORT).show()
             }
-
         }
 
-        val database = getInstance()
-        val myRef = database.reference
-        myRef.child("users").setValue("Hello, World!")
+
 
     }
 
