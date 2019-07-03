@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             val Email = email.text.toString()
             val Password = password?.text.toString()
             if (!TextUtils.isEmpty(Email) && !TextUtils.isEmpty(Password)) {
-                mProgressBar!!.setMessage("Registering User...")
+                mProgressBar!!.setMessage("Подождите, мы входим :)...")
                 mProgressBar!!.show()
                 mAuth!!.signInWithEmailAndPassword(Email!!, Password!!)
                     .addOnCompleteListener(this) { task ->

@@ -40,7 +40,7 @@ class RegisterActivity : AppCompatActivity() {
                 mAuth = FirebaseAuth.getInstance()
                 println("Ye")
                 mProgressBar = ProgressDialog(this)
-                mProgressBar!!.setMessage("Registering User...")
+                mProgressBar!!.setMessage("Регистрируем...")
                 mProgressBar!!.show()
                 var Username = username.text.toString()
                 var Email = email.text.toString()
