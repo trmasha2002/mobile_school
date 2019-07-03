@@ -11,4 +11,13 @@
     <string name="new_password">New Password</string>
     <string name="new_password_again">New Password Again</string>
     <string name="change_password">Change Password</string>
+    <string name="password_again">Password Again</string>
+    <string name="product_name">Product name</string>
+    <string name="count">Count</string>
+    <string name="product_name">Product name</string>
+    <string name="shelf_life">Shelf life</string>
+    <string name="buy_time">Buy Time</string>
+    <string name="code">Code</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
 </resources>
