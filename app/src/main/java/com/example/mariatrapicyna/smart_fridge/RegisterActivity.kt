@@ -34,7 +34,7 @@ class RegisterActivity : AppCompatActivity() {
             if (firstPassword.text.toString().length < 6) {
                 Toast.makeText(applicationContext, "Пароль должен быть не менее 6 символов", Toast.LENGTH_LONG).show()
             }
-            if (firstPassword.text.toString()== secondPassword.text.toString()) {
+            if (firstPassword.text.toString() == secondPassword.text.toString()) {
                 mDatabase = FirebaseDatabase.getInstance()
                 mDatabaseReference = mDatabase!!.reference!!.child("Users")
                 mAuth = FirebaseAuth.getInstance()
@@ -55,15 +55,18 @@ class RegisterActivity : AppCompatActivity() {
                             //update user profile information
                             val currentUserDb = mDatabaseReference!!.child(userId)
                             currentUserDb.child("usertName").setValue(Username)
-                            this.startActivity(Intent(this, ListActivity::class.java))
+                            this.startActivity(Intent(this, MainActivity::class.java))
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                            Toast.makeText(this@RegisterActivity, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show()
-                        }}
+                            Toast.makeText(
+                                this@RegisterActivity, "Authentication failed.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
 
-                } else {
+            } else {
                 println(firstPassword.text)
                 println("dfsf")
                 println(secondPassword.text)

@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundCard"
-        tools:context=".ProductActivity">
+        tools:context=".ProductFragment">
 
     <include
             android:id="@+id/toolbar"
@@ -80,19 +80,4 @@
             android:singleLine="true"
             android:textColor="@color/textCard"
             android:background="@color/backgroundCardElement"/>
-    <EditText
-            android:id="@+id/code"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/shelf_life"
-            app:layout_constraintStart_toStartOf="@+id/shelf_life"
-            android:layout_marginTop="8dp"
-
-            android:textSize="30sp"
-            android:hint="@string/code"
-            android:padding="1dp"
-            android:singleLine="true"
-            android:textColor="@color/textCard"
-            android:background="@color/backgroundCardElement"/>
-
 </android.support.constraint.ConstraintLayout>

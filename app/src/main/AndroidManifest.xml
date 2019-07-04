@@ -9,17 +9,15 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ProductActivity"
-                  android:parentActivityName=".ListActivity">
-        </activity>
-        <activity android:name=".ListActivity">
-        </activity>
-        <activity android:name=".UserActivity">
-        </activity>
-        <activity android:name=".RegisterActivity">
-        </activity>
+        <activity android:name=".MainActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ProductFragment"/>
         <activity
-                android:name=".MainActivity"
+                android:name=".ListFragment"/>
+        <activity android:name=".UserActivity"/>
+        <activity android:name=".RegisterActivity"/>
+        <activity
+                android:name=".LoginActivity"
                 android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

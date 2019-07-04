@@ -5,9 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import java.util.*
 
-class ProductAdapter(private val ProductList: List<Product>) :
+class ProductAdapter :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+
+    private val product = Product("milk", Date(2019, 7, 2), Date(2019, 7, 2), 2)
+    private val productList: List<Product> = listOf(product)
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): ProductViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
@@ -16,11 +20,11 @@ class ProductAdapter(private val ProductList: List<Product>) :
     }
 
     override fun getItemCount(): Int {
-        return ProductList.count()
+        return productList.count()
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val product = ProductList[position]
+        val product = productList[position]
         holder.bind(product)
     }
 
