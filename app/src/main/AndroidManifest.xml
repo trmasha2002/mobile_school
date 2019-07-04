@@ -12,7 +12,7 @@
         <activity android:name=".ProductActivity"
                   android:parentActivityName=".ListActivity">
         </activity>
-        <activity android:name=".ListActivity">
+        <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".MenuActivity">
         </activity>
@@ -21,7 +21,7 @@
         <activity android:name=".RegisterActivity">
         </activity>
         <activity
-                android:name=".MainActivity"
+                android:name=".ListActivity">
                 android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
