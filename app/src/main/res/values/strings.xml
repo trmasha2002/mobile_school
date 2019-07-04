@@ -23,4 +23,5 @@
     <string name="prosr">Просрочено</string>
     <string name="recipes">Что я могу приготовить?</string>
     <string name="addproduct">Добавить продукт</string>
+    <string name="title_activity_recipes">RecipesActivity</string>
 </resources>

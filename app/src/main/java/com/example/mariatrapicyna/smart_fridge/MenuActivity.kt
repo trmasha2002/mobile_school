@@ -18,6 +18,8 @@ class MenuActivity : AppCompatActivity() {
         list_product.setOnClickListener {
             this.startActivity(Intent(this, ProductActivity::class.java))
         }
-
+        recipes.setOnClickListener{
+            this.startActivity(Intent(this, RecipesActivity::class.java))
+        }
     }
 }
