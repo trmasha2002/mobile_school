@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.util.Log
+import android.view.Menu
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                         mProgressBar!!.hide()
                         if (task.isSuccessful) {
                             // Sign in success, update UI with signed-in user's information
-                            this.startActivity(Intent(this, ListActivity::class.java))
+                            this.startActivity(Intent(this, MenuActivity::class.java))
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(this@MainActivity, "Не удалось войти. Проверьте данные",

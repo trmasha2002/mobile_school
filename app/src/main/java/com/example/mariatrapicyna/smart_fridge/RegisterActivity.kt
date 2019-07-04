@@ -55,7 +55,7 @@ class RegisterActivity : AppCompatActivity() {
                             //update user profile information
                             val currentUserDb = mDatabaseReference!!.child(userId)
                             currentUserDb.child("usertName").setValue(Username)
-                            this.startActivity(Intent(this, ListActivity::class.java))
+                            this.startActivity(Intent(this, MenuActivity::class.java))
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.exception)
