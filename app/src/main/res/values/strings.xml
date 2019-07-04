@@ -19,4 +19,8 @@
     <string name="code">Code</string>
     <string name="save">Save</string>
     <string name="delete">Delete</string>
+    <string name="listproduct">Мои продукты</string>
+    <string name="prosr">Просрочено</string>
+    <string name="recipes">Что я могу приготовить?</string>
+    <string name="addproduct">Добавить продукт</string>
 </resources>
