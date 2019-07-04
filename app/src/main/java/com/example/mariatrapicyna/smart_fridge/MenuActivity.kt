@@ -16,7 +16,7 @@ class MenuActivity : AppCompatActivity() {
         val recipes = findViewById<Button>(R.id.recipes)
 
         list_product.setOnClickListener {
-            this.startActivity(Intent(this, ListActivity::class.java))
+            this.startActivity(Intent(this, ProductActivity::class.java))
         }
 
     }

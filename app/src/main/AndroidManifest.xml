@@ -9,10 +9,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ProductActivity"
-                  android:parentActivityName=".ListActivity">
-        </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".ProductActivity">
         </activity>
         <activity android:name=".MenuActivity">
         </activity>
@@ -21,7 +18,7 @@
         <activity android:name=".RegisterActivity">
         </activity>
         <activity
-                android:name=".ListActivity">
+                android:name=".MainActivity">
                 android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
