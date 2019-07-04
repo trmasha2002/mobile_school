@@ -5,13 +5,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="1dp"
-        android:background="@color/backgroundCard">
+        android:background="@color/background">
 
     <ImageView
             android:id="@+id/logo"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:background="@color/backgroundCardElement"
 
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +31,6 @@
             android:padding="1dp"
             android:singleLine="true"
             android:textColor="@color/textCard"
-            android:background="@color/backgroundCardElement"
 
             android:text="Test name "/>
 
@@ -49,7 +47,6 @@
             android:padding="1dp"
             android:singleLine="true"
             android:textColor="@color/textCard"
-            android:background="@color/backgroundCardElement"
 
             android:text="26"/>
 
@@ -65,7 +62,6 @@
             android:padding="1dp"
             android:singleLine="true"
             android:textColor="@color/textCard"
-            android:background="@color/backgroundCardElement"
 
             android:text="Shelf life delete too :)"/>
 

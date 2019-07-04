@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
             val Email = email.text.toString()
             val Password = password?.text.toString()
             if (!TextUtils.isEmpty(Email) && !TextUtils.isEmpty(Password)) {
-                mProgressBar!!.setMessage("Registering User...")
+                mProgressBar!!.setMessage("Wait some second")
                 mProgressBar!!.show()
                 mAuth!!.signInWithEmailAndPassword(Email!!, Password!!)
                     .addOnCompleteListener(this) { task ->
@@ -42,24 +42,16 @@ class LoginActivity : AppCompatActivity() {
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(
-                                this@LoginActivity, "Не удалось войти. Проверьте данные",
+                                this@LoginActivity, "Could not log in. Check the data",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
                     }
             } else {
-                Toast.makeText(this, "Введите все данные", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Enter all data", Toast.LENGTH_SHORT).show()
             }
         }
 
 
-    }
-
-    private fun isSinged(): Boolean {
-        /*
-        * Проверяет корректность данных
-        * Допишете, когда доделаете авторизацию :)  */
-
-        return true
     }
 }

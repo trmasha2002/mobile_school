@@ -19,6 +19,7 @@
             android:layout_marginEnd="24dp"
 
             android:hint="@string/prompt_email"
+            android:textSize="20sp"
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,10 +35,24 @@
             android:focusable="true"
 
             android:hint="@string/username"
+            android:textSize="20sp"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email"/>
+
+    <TextView android:id="@+id/passHint"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="24dp"
+              android:layout_marginTop="8dp"
+              android:layout_marginEnd="24dp"
+
+              android:text="@string/symbols_for_password"
+              android:textSize="20sp"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/username"/>
 
     <EditText
             android:id="@+id/firstPassword"
@@ -47,12 +62,13 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
 
-            android:hint="@string/prompt_password"
+            android:hint="@string/password_length_more_6"
+            android:textSize="20sp"
             android:inputType="textPassword"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username"/>
+            app:layout_constraintTop_toBottomOf="@+id/passHint"/>
     <EditText
             android:id="@+id/secondPassword"
             android:layout_width="0dp"
@@ -60,7 +76,8 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
-            android:hint="@string/password_again"
+            android:hint="@string/password_again_length_more_6"
+            android:textSize="20sp"
             android:inputType="textPassword"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,6 +96,7 @@
             android:layout_marginEnd="48dp"
             android:layout_marginBottom="64dp"
             android:text="@string/register"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

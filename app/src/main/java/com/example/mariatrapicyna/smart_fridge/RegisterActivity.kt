@@ -11,6 +11,8 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -31,47 +33,74 @@ class RegisterActivity : AppCompatActivity() {
 
 
         register.setOnClickListener {
-            if (firstPassword.text.toString().length < 6) {
-                Toast.makeText(applicationContext, "Пароль должен быть не менее 6 символов", Toast.LENGTH_LONG).show()
-            }
-            if (firstPassword.text.toString() == secondPassword.text.toString()) {
-                mDatabase = FirebaseDatabase.getInstance()
-                mDatabaseReference = mDatabase!!.reference!!.child("Users")
-                mAuth = FirebaseAuth.getInstance()
-                println("Ye")
-                mProgressBar = ProgressDialog(this)
-                mProgressBar!!.setMessage("Registering User...")
-                mProgressBar!!.show()
-                var Username = username.text.toString()
-                var Email = email.text.toString()
-                var Password = firstPassword.text.toString()
-                mAuth!!.createUserWithEmailAndPassword(Email, Password)
-                    .addOnCompleteListener(this) { task ->
-                        mProgressBar!!.hide()
-                        if (task.isSuccessful) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success")
-                            val userId = mAuth!!.currentUser!!.uid
-                            //update user profile information
-                            val currentUserDb = mDatabaseReference!!.child(userId)
-                            currentUserDb.child("usertName").setValue(Username)
-                            this.startActivity(Intent(this, MainActivity::class.java))
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                            Toast.makeText(
-                                this@RegisterActivity, "Authentication failed.",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
 
+            if (isValidMail(email.text.toString())) {
+                if (isValidPassword(firstPassword.text.toString()) && isValidPassword(secondPassword.text.toString())) {
+                    if (firstPassword.text.toString() == secondPassword.text.toString()) {
+                        if (username.text.toString().isNotEmpty()) {
+                            mDatabase = FirebaseDatabase.getInstance()
+                            mDatabaseReference = mDatabase!!.reference!!.child("Users")
+                            mAuth = FirebaseAuth.getInstance()
+                            println("Ye")
+                            mProgressBar = ProgressDialog(this)
+                            mProgressBar!!.setMessage("Registering User...")
+                            mProgressBar!!.show()
+                            var Username = username.text.toString()
+                            var Email = email.text.toString()
+                            var Password = firstPassword.text.toString()
+                            mAuth!!.createUserWithEmailAndPassword(Email, Password)
+                                .addOnCompleteListener(this) { task ->
+                                    mProgressBar!!.hide()
+                                    if (task.isSuccessful) {
+                                        // Sign in success, update UI with the signed-in user's information
+                                        Log.d(TAG, "createUserWithEmail:success")
+                                        val userId = mAuth!!.currentUser!!.uid
+                                        //update user profile information
+                                        val currentUserDb = mDatabaseReference!!.child(userId)
+                                        currentUserDb.child("usertName").setValue(Username)
+                                        this.startActivity(Intent(this, MainActivity::class.java))
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                                        Toast.makeText(
+                                            this@RegisterActivity, "Authentication failed.",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                }
+                        } else {
+                            Toast.makeText(applicationContext, "Check username", Toast.LENGTH_LONG).show()
+                        }
+                    } else {
+                        println(firstPassword.text)
+                        println("dfsf")
+                        println(secondPassword.text)
+                        Toast.makeText(applicationContext, "Passwords do not match", Toast.LENGTH_LONG).show()
+                    }
+                } else {
+                    Toast.makeText(applicationContext, "Check password", Toast.LENGTH_LONG).show()
+                }
             } else {
-                println(firstPassword.text)
-                println("dfsf")
-                println(secondPassword.text)
-                Toast.makeText(applicationContext, "Пароли не совпадают", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Check mail", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+
+    private fun isValidMail(email: String): Boolean {
+        val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
+        val pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
+        val matcher = pattern.matcher(email)
+        return matcher.matches()
+    }
+
+    private fun isValidPassword(password: String): Boolean {
+        val pattern: Pattern
+        val matcher: Matcher
+        val passwordPattern = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#\$%^+\\'=!:;(){}\"])(?=\\S+$).{4,}$"
+        pattern = Pattern.compile(passwordPattern)
+        matcher = pattern.matcher(password)
+        return matcher.matches()
+
     }
 }
