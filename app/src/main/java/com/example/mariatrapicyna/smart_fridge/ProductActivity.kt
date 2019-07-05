@@ -102,6 +102,7 @@ class ProductActivity : AppCompatActivity(), ItemRowListener {
                 todoItem.objectId = currentItem.key
                 todoItem.done = map.get("done") as Boolean?
                 todoItem.itemText = map.get("itemText") as String?
+                todoItem.day = map.get("day") as String?
                 toDoItemList!!.add(todoItem);
             }
         }
@@ -115,6 +116,7 @@ class ProductActivity : AppCompatActivity(), ItemRowListener {
         alert.setTitle("Добавляем новый продукт")
         val picker = DatePicker(this)
         picker.calendarViewShown = false
+        picker.setMinDate(System.currentTimeMillis())
         val lila1 = LinearLayout(this)
         lila1.orientation = 1 //1 is for vertical orientation
         val input = EditText(this)
@@ -154,6 +156,10 @@ class ToDoItemAdapter(context: Context, toDoItemList: MutableList<ToDoItem>) : B
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val itemText: String = itemList.get(position).itemText as String
         val objectId: String = itemList.get(position).objectId as String
+        val c = Calendar.getInstance()
+        val dayi = c.get(Calendar.DAY_OF_MONTH)
+        val dayp: String = itemList.get(position).day as String
+        val daypp = dayp.toInt()
         val view: View
         val vh: ListRowHolder
         if (convertView == null) {
@@ -164,7 +170,7 @@ class ToDoItemAdapter(context: Context, toDoItemList: MutableList<ToDoItem>) : B
             view = convertView
             vh = view.tag as ListRowHolder
         }
-        vh.label.text = itemText
+        vh.label.text = itemText + ", до истечения срока годности еще "+ (daypp - dayi).toString() + " дня/дней"
         vh.ibDeleteObject.setOnClickListener {
             rowListener.onItemDelete(objectId)
 
