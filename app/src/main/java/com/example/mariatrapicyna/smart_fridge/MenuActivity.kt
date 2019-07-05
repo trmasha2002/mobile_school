@@ -21,5 +21,8 @@ class MenuActivity : AppCompatActivity() {
         recipes.setOnClickListener{
             this.startActivity(Intent(this, RecipesActivity::class.java))
         }
+        prosr.setOnClickListener{
+            this.startActivity(Intent(this, ProsrActivity::class.java))
+        }
     }
 }

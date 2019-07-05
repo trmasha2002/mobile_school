@@ -16,6 +16,8 @@
         </activity>
         <activity android:name=".ProductActivity">
         </activity>
+        <activity android:name=".ProsrActivity">
+        </activity>
         <activity android:name=".MenuActivity">
         </activity>
         <activity android:name=".UserActivity">
