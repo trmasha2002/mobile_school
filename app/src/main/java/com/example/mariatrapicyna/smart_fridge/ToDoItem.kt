@@ -6,5 +6,8 @@ class ToDoItem {
     }
     var objectId: String? = null
     var itemText: String? = null
+    var year: String? = null
+    var month: String? = null
+    var day: String? = null
     var done: Boolean? = false
 }

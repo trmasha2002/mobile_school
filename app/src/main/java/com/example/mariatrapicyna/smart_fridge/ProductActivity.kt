@@ -1,8 +1,12 @@
 package com.example.mariatrapicyna.smart_fridge
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.icu.text.SimpleDateFormat
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -13,7 +17,17 @@ import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.core.Constants
+import java.util.*
+import javax.xml.datatype.DatatypeConstants.MONTHS
+import kotlin.collections.HashMap
 import android.support.design.widget.FloatingActionButton as FloatingActionButton1
+import android.widget.DatePicker
+import android.widget.EditText
+import android.widget.LinearLayout
+
+
+
+
 
 interface ItemRowListener {
     fun onItemDelete(itemObjectId: String) {
@@ -52,7 +66,10 @@ class ProductActivity : AppCompatActivity(), ItemRowListener {
 
     val fab = findViewById<View>(R.id.fab) as FloatingActionButton1
         listViewItems = findViewById<View>(R.id.items_list) as ListView
-
+    val tomenu = findViewById<Button>(R.id.tomenu)
+    tomenu.setOnClickListener{
+        this.startActivity(Intent(this, MenuActivity::class.java))
+    }
     fab.setOnClickListener{view ->
         //Show Dialog here to add new Item
         addNewItemDialog()
@@ -91,15 +108,27 @@ class ProductActivity : AppCompatActivity(), ItemRowListener {
         //alert adapter that has changed
         adapter.notifyDataSetChanged()
     }
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun addNewItemDialog() {
         val alert = AlertDialog.Builder(this)
-        val itemEditText = EditText(this)
-        alert.setMessage("Введите название продукта")
-        alert.setTitle("Доовляем новый продукт")
-        alert.setView(itemEditText)
+        alert.setMessage("Введите название продукта и его срок годности")
+        alert.setTitle("Добавляем новый продукт")
+        val picker = DatePicker(this)
+        picker.calendarViewShown = false
+        val lila1 = LinearLayout(this)
+        lila1.orientation = 1 //1 is for vertical orientation
+        val input = EditText(this)
+        val input1 = picker
+        lila1.addView(input)
+        lila1.addView(input1)
+        alert.setView(lila1)
+        alert.setView(lila1)
         alert.setPositiveButton("Submit") { dialog, positiveButton ->
-            val todoItem = ToDoItem.create()
-            todoItem.itemText = itemEditText.text.toString()
+            var todoItem = ToDoItem.create()
+            todoItem.itemText = input.text.toString()
+            todoItem.year = input1.year.toString()
+            todoItem.month = input1.month.toString()
+            todoItem.day = input1.dayOfMonth.toString()
             todoItem.done = true
 
             var mDatabase = FirebaseDatabase.getInstance().reference
